@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <title>Document</title>
+</head>
+<body>
+   <header>
+      <div class="bg-opacity-20 bg-secondary py-4">
+         <h1 class="text-center text-black fw-bold text-opacity-20">Task List</h1>
+      </div>
+   </header>
+   <form class="m-5">
+
+      <h2 class="fw-bold">Add New Task</h2>
+
+      <div class="row mb-3">
+         <div class="col-6">
+            <label for="taskname" class="form-label">Task Name</label>
+            <input type="text" class="form-control" id="taskname1">            
+         </div>
+      </div>
+      
+       <div class="row mb-3">
+          <div class="col-6">
+            <label for="taskdescription" class="form-label">Task Description</label>
+            <input type="text" class="form-control" id="taskdescription1">
+          </div>
+       </div>
+
+       <div class="row mb-3">
+         <div class="col-6 ">
+            <label for="assignedto" class="form-label">Assigned To</label>
+            <input type="text" class="form-control" id="assignedto1">
+         </div>
+         
+         <div class="col-6 align-right" >
+            <label for="duedate" class="form-label">Due Date</label>
+            <input type="date" class="form-control" id="duedate1">               
+         </div>          
+       </div>
+       
+       <button type="submit" class="btn btn-dark">Add Task</button>
+   </form>
+   <section>
+      <h2>Tasks</h2>
+      <div>
+         <h3>Task Name</h3>
+         <h4>Todo</h4>
+         <h4>Assigned To: Jhon Doe</h4>
+         <h4>Due: 27/1/2022</h4>   
+         <h4>Buy Milk and cookies at the grocery store.</h4>  
+         <button>Mark As Done</button> 
+         <button>Delete</button>             
+      </div>
+   </section>
+</body>
+</html>
