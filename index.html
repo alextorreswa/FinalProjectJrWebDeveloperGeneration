@@ -20,14 +20,14 @@
       <div class="row mb-3">
          <div class="col-6">
             <label for="taskname" class="form-label">Task Name</label>
-            <input type="text" class="form-control" id="taskname1">            
+            <input id="taskname1" type="text" class="form-control" >            
          </div>
       </div>
       
        <div class="row mb-3">
           <div class="col-6">
             <label for="taskdescription" class="form-label">Task Description</label>
-            <input type="text" class="form-control" id="taskdescription1">
+            <input id="taskdescription1" type="text" class="form-control" >
           </div>
        </div>
 
@@ -43,7 +43,12 @@
          </div>          
        </div>
        
-       <button type="submit" class="btn btn-dark">Add Task</button>
+       <button id="bttSubmit" type="submit" class="btn btn-dark">Add Task</button>
+       
+       <div id="AlertMsg" class="alert alert-danger" role="alert" hidden>
+         There's a problem with your entered values. 
+       </div>
+
    </form>
    <section>
       <h2>Tasks</h2>
@@ -60,5 +65,6 @@
 
 
    </section>
+   <script src="./index.js"></script>
 </body>
 </html>
