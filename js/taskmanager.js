@@ -5,7 +5,7 @@ const createTaskHtml = (name, description, assignedTo, dueDate, status) => {
                 <div class="card-body">
                    <h5 class="card-title">${name}</h5>
                    <div class="d-flex w-100 justify-content-between">
-                   <h6 class="card-subtitle mb-2 text-muted">Assigned To:  <span class="text-right">${assignedTo}</span></h6>
+                   <h6 class="card-subtitle mb-2 text-muted">Assigned To:  <span class="text-right">${assignedTo}</span></h6>             
                    <p class="card-text">Due: ${dueDate} </p> 
                    </div>
                 </div>
@@ -42,9 +42,12 @@ class TaskManager {
             day: 'numeric', // numeric, 2-digit
             year: 'numeric', // numeric, 2-digit
             month: 'long', // numeric, 2-digit, long, short, narrow
-        });
-         console.log(formattedDate);
-      } );
-      
+         });
+         const taskHtml =  createTaskHtml(element[1],element[2],element[3],formattedDate,element[5]);
+         tasksHtmlList.push(taskHtml);
+      });
+      const tasksHtml = tasksHtmlList.join('\n');
+      console.log(tasksHtml);
+      document.getElementById('taskList').innerHTML = tasksHtml;
    }
 }
