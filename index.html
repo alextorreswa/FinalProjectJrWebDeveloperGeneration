@@ -46,25 +46,107 @@
        <button id="bttSubmit" type="submit" class="btn btn-dark">Add Task</button>
 
        <div id="AlertMsg" class="alert alert-danger" role="alert" hidden>
-         You have to fill all fields to add a task!
+         You have to fill all fields and inster a date after or iqual today to add a task!
        </div>
 
    </form>
-   <section>
+   <section class="ml-5">
       <h2>Tasks</h2>
 
-      <div class="card" style="width: 18rem;">
-         <div class="card-body">
-           <h5 class="card-title">Task Name</h5>
-           <h6 class="card-subtitle mb-2 text-muted">Name</h6>
-           <p class="card-text">Due Date: </p>
-           <button>Mark As Done</button> 
-           <button>Delete</button>   
-         </div>
-       </div>
-
-
+      <ul class="list-group list-group-flush">
+         <li class="list-group-item" style="width: 30rem;">
+            <div class="card" style="width: 28rem;">
+               <div class="card-body">
+                  <h5 class="card-title">Task Name</h5>
+                  <div class="d-flex w-100 justify-content-between">
+                  <h6 class="card-subtitle mb-2 text-muted">Assigned To: <span class="text-right">John Doe</span></h6>
+                  <p class="card-text">Due: Date </p> 
+                  </div>
+               </div>
+               <div class="card-body ">
+                  <p class="card-text border-dark">Some Description. Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati ab dignissimos </p>
+               </div>
+               <div class="card-footer text-right" style="width: 28rem;">
+                  <a href="#" class="btn border-success">Mark As Done</a>
+                  <a href="#" class="btn border-danger">Delete</a>
+               </div>
+            </div>
+         </li>
+         <li href="#" class="list-group-item" style="width: 30rem;">
+            <div class="card" style="width: 28rem;">
+               <div class="card-body">
+                  <h5 class="card-title">Task Name</h5>
+                  <div class="d-flex w-100 justify-content-between">
+                     <h6 class="card-subtitle mb-2 text-muted">Assigned To: <span class="text-right">John Doe</span></h6>
+                     <p class="card-text">Due: Date </p> 
+                  </div>
+               </div>
+               <div class="card-body ">
+                  <p class="card-text border-dark">Some Description. Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati ab dignissimos </p>
+               </div>
+               <div class="card-footer text-right" style="width: 28rem;">
+                  <a href="#" class="btn border-success">Mark As Done</a>
+                  <a href="#" class="btn border-danger">Delete</a>
+               </div>
+            </div>
+         </li>
+         <li href="#" class="list-group-item" style="width: 30rem;">
+            <div class="card" style="width: 28rem;">
+               <div class="card-body">
+                  <h5 class="card-title">Task Name</h5>
+                  <div class="d-flex w-100 justify-content-between">
+                     <h6 class="card-subtitle mb-2 text-muted">Assigned To: <span class="text-right">John Doe</span></h6>
+                     <p class="card-text">Due: Date </p> 
+                  </div>
+               </div>
+               <div class="card-body ">
+                  <p class="card-text border-dark">Some Description. Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati ab dignissimos </p>
+               </div>
+               <div class="card-footer text-right" style="width: 28rem;">
+                  <a href="#" class="btn border-success">Mark As Done</a>
+                  <a href="#" class="btn border-danger">Delete</a>
+               </div>
+            </div>
+         </li>
+         <li href="#" class="list-group-item" style="width: 30rem;">
+            <div class="card" style="width: 28rem;">
+               <div class="card-body">
+                  <h5 class="card-title">Task Name</h5>
+                  <div class="d-flex w-100 justify-content-between">
+                  <h6 class="card-subtitle mb-2 text-muted">Assigned To: <span class="text-right">John Doe</span></h6>
+                  <p class="card-text">Due: Date </p> 
+                  </div>
+               </div>
+               <div class="card-body ">
+                  <p class="card-text border-dark">Some Description. Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati ab dignissimos </p>
+               </div>
+               <div class="card-footer text-right" style="width: 28rem;">
+                  <a href="#" class="btn border-success">Mark As Done</a>
+                  <a href="#" class="btn border-danger">Delete</a>
+               </div>
+            </div>
+         </li>
+         <li href="#" class="list-group-item" style="width: 30rem;">
+            <div class="card" style="width: 28rem;">
+               <div class="card-body">
+                  <h5 class="card-title">Task Name</h5>
+                  <div class="d-flex w-100 justify-content-between">
+                  <h6 class="card-subtitle mb-2 text-muted">Assigned To: <span class="text-right">John Doe</span></h6>
+                  <p class="card-text">Due: Date </p> 
+                  </div>
+               </div>
+               <div class="card-body ">
+                  <p class="card-text border-dark">Some Description. Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati ab dignissimos </p>
+               </div>
+               <div class="card-footer text-right" style="width: 28rem;">
+                  <a href="#" class="btn border-success">Mark As Done</a>
+                  <a href="#" class="btn border-danger">Delete</a>
+               </div>
+            </div>
+         </li>         
+      </div>
    </section>
-   <script src="./index.js"></script>
+   <script src="./js/taskmanager.js"></script>   
+   <script src="./js/index.js"></script>
 </body>
 </html>
