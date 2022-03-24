@@ -71,8 +71,10 @@ document.getElementById("bttSubmit").onclick = AddTask;
 
 //Create class TaskManager
 const taskclass = new TaskManager();
-taskclass.addTask('Take out the trash','Take out the trash to the front of the house','Nick','2020-09-20');
+taskclass.addTask('Take out the trash','Take out the trash to the front of the house','Nick','2020-09-16');
 taskclass.addTask('Cook Dinner','Prepare a healthy serving of pancakes for the family tonight','Nick','2020-09-20');
 console.log(taskclass.tasks);
+taskclass.render();
 
-
+//const htmltest = createTaskHtml('Cook Dinner','Prepare a healthy serving of pancakes for the family tonight','Nick','2020-09-20','TODO');
+//console.log(htmltest);
