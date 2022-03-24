@@ -36,6 +36,14 @@ function isError(vis) {
   }
 }
 
+//function clear fields
+function clear(){
+  document.getElementById('taskname1').value = '';
+  document.getElementById('taskdescription1').value = '';
+  document.getElementById('assignedto1').value = '';
+  document.getElementById('duedate1').value = '';
+}
+
 //Add a task function when push the button
 function AddTask(e) {
   e.preventDefault();
@@ -50,6 +58,7 @@ function AddTask(e) {
     isError(false);
     taskclass.addTask(nameTask,nameDes,nameAssig,nameDueDate);
     console.log(taskclass.tasks);
+    clear();
   } else {
     console.log('Invalid data')    
     isError(true);
