@@ -1,6 +1,6 @@
-const createTaskHtml = (name, description, assignedTo, dueDate, status) => {
+const createTaskHtml = (id, name, description, assignedTo, dueDate, status) => {
    const html = `
-     <li class="list-group-item" style="width: 30rem;">
+     <li id='data-task-${id}' class="list-group-item" style="width: 30rem;">
              <div class="card" style="width: 28rem;">
                 <div class="card-body">
                    <h5 class="card-title">${name}</h5>
@@ -13,9 +13,11 @@ const createTaskHtml = (name, description, assignedTo, dueDate, status) => {
                    <p class="card-text border-dark">${description}</p>
                 </div>
                 <div class="card-footer text-right" style="width: 28rem;">
-                   <a href="#" class="btn border-success">${status}</a>
-                   <a href="#" class="btn border-danger">Delete</a>
+                  <a href="#" class="done-button btn border-success">Mark As Done</a>
+                  <a href="#" class="btn border-success">${status}</a>
+                  <a href="#" class="btn border-danger">Delete</a>
                 </div>
+
              </div>
           </li>
  `;
@@ -28,6 +30,15 @@ class TaskManager {
    constructor (currentId = 0) {
       this.currentId = currentId;
       this.tasks = [];
+   }
+   getTaskById (taskId) {
+      let foundTask;
+      this.tasks.forEach(element => {
+         if(taskId===element[0]) {
+            foundTask = element;
+         }
+      });
+      return foundTask; 
    }
    addTask (name, description, assignedTo, dueDate, status='TODO') {
       this.currentId++;
@@ -43,11 +54,12 @@ class TaskManager {
             year: 'numeric', // numeric, 2-digit
             month: 'long', // numeric, 2-digit, long, short, narrow
          });
-         const taskHtml =  createTaskHtml(element[1],element[2],element[3],formattedDate,element[5]);
+         const taskHtml =  createTaskHtml(element[0],element[1],element[2],element[3],formattedDate,element[5]);
          tasksHtmlList.push(taskHtml);
       });
       const tasksHtml = tasksHtmlList.join('\n');
-      console.log(tasksHtml);
+      //console.log(tasksHtml);
       document.getElementById('taskList').innerHTML = tasksHtml;
    }
+
 }

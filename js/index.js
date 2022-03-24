@@ -70,12 +70,32 @@ function AddTask(e) {
 //Event handled 
 document.getElementById("bttSubmit").onclick = AddTask;
 
+const taskList = document.getElementById("taskList");
+taskList.addEventListener('click',(event) => {
+  console.log('click on tasklist')  
+  if(event.target.classList.contains('done-button')){
+    console.log('Cliqueo a done button')
+  }
+  const parentTask = event.target.parentElement.parentElement.parentElement;
+  const task = taskclass.getTaskById(getLastDigits(parentTask.id));
+  task[5] = 'DONE';
+  taskclass.render();
+  console.log(task);  
+});
+
+function getLastDigits(s) {
+  return parseInt(s.match(/\d+$/)[0]);
+}
+
+
+
+
 //Create class TaskManager
 const taskclass = new TaskManager();
 taskclass.addTask('Take out the trash','Take out the trash to the front of the house','Alex','2020-09-16');
 taskclass.addTask('Cook Dinner','Prepare a healthy serving of pancakes for the family tonight','Saul','2020-09-20');
 console.log(taskclass.tasks);
-
+//console.log(taskclass.getTaskById(2));
 
 //const htmltest = createTaskHtml('Cook Dinner','Prepare a healthy serving of pancakes for the family tonight','Nick','2020-09-20','TODO');
 //console.log(htmltest);
