@@ -72,17 +72,27 @@ function AddTask(e) {
 document.getElementById("bttSubmit").onclick = AddTask;
 
 const taskList = document.getElementById("taskList");
+
 taskList.addEventListener('click',(event) => {
   console.log('click on tasklist')  
   if(event.target.classList.contains('done-button')){
-    console.log('Clicked on done button')
+    console.log('Clicked on done button');
+    const parentTask = event.target.parentElement.parentElement.parentElement;
+    const task = taskclass.getTaskById(getLastDigits(parentTask.id));
+    task[5] = 'DONE';
+    taskclass.save();
+    taskclass.render();
+    //console.log(task);   
+    //event.target.parentElement.hidden = true;       
   }
-  const parentTask = event.target.parentElement.parentElement.parentElement;
-  const task = taskclass.getTaskById(getLastDigits(parentTask.id));
-  task[5] = 'DONE';
-  taskclass.save();
-  taskclass.render();
-  console.log(task);  
+  if(event.target.classList.contains('delete-button')){
+    console.log('Clicked on delete button');
+    const parentTask = event.target.parentElement.parentElement.parentElement;
+    taskclass.deleteTask(getLastDigits(parentTask.id));
+    taskclass.save();
+    taskclass.render();
+  }
+
 });
 
 function getLastDigits(s) {
@@ -94,8 +104,10 @@ function getLastDigits(s) {
 
 //Create class TaskManager
 const taskclass = new TaskManager();
-taskclass.addTask('Take out the trash','Take out the trash to the front of the house','Alex','2020-09-16');
-taskclass.addTask('Cook Dinner','Prepare a healthy serving of pancakes for the family tonight','Saul','2020-09-20');
+taskclass.addTask('Take out the trash','Take out the trash to the front of the house','Alex','2022-04-04');
+taskclass.addTask('Cook Dinner','Prepare a healthy serving of pancakes for the family tonight','Saul','2022-03-30');
+taskclass.addTask('Pick up groceries','Go to Amazon Fresh','Saul','2022-05-01');
+taskclass.save();
 console.log(taskclass.tasks);
 //console.log(taskclass.getTaskById(2));
 

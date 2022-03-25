@@ -15,7 +15,7 @@ const createTaskHtml = (id, name, description, assignedTo, dueDate, status) => {
                 <div class="card-footer text-right" style="width: 28rem;">
                   <a href="#" class="done-button btn border-success">Mark As Done</a>
                   <a href="#" class="btn border-success">${status}</a>
-                  <a href="#" class="btn border-danger">Delete</a>
+                  <a href="#" class="delete-button btn border-danger">Delete</a>
                 </div>
 
              </div>
@@ -76,6 +76,30 @@ class TaskManager {
          console.log('No localStorage available');
        }
        
+   }
+
+   load () {
+      const tasksJson = localStorage.getItem('tasks');
+      if(tasksJson.length != 0) {
+         this.tasks = JSON.parse(tasksJson);
+      }
+      const currentIdJson = localStorage.getItem('currentId');
+      if(currentIdJson.length != 0) {
+         this.currentId = parseInt(currentIdJson);
+         //console.log(this.currentId);
+      }   
+   }
+
+   deleteTask(taskId) {
+      console.log('delete funcion...',taskId,this.tasks);
+      const newTasks = [];
+      this.tasks.forEach(element => { 
+         if(element[0]!=taskId) {
+            newTasks.push(element);
+         }
+      });
+      this.tasks = newTasks;
+      console.log(newTasks);
    }
 
 //    storageAvailable(type) {
