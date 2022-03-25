@@ -57,6 +57,7 @@ function AddTask(e) {
     console.log('Valid data')
     isError(false);
     taskclass.addTask(nameTask,nameDes,nameAssig,nameDueDate);
+    taskclass.save();
     //console.log(taskclass.tasks);
     taskclass.render();
     clear();
@@ -74,11 +75,12 @@ const taskList = document.getElementById("taskList");
 taskList.addEventListener('click',(event) => {
   console.log('click on tasklist')  
   if(event.target.classList.contains('done-button')){
-    console.log('Cliqueo a done button')
+    console.log('Clicked on done button')
   }
   const parentTask = event.target.parentElement.parentElement.parentElement;
   const task = taskclass.getTaskById(getLastDigits(parentTask.id));
   task[5] = 'DONE';
+  taskclass.save();
   taskclass.render();
   console.log(task);  
 });
@@ -99,3 +101,6 @@ console.log(taskclass.tasks);
 
 //const htmltest = createTaskHtml('Cook Dinner','Prepare a healthy serving of pancakes for the family tonight','Nick','2020-09-20','TODO');
 //console.log(htmltest);
+
+taskclass.load();
+taskclass.render();
