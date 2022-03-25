@@ -1,11 +1,22 @@
 const createTaskHtml = (id, name, description, assignedTo, dueDate, status) => {
+   let hideDone,borderStatus;   
+   if(status==='Done') {
+      hideDone = 'hidden';
+      borderStatus='success';
+   } else {
+      hideDone = '';
+      borderStatus='warning';
+   }
    const html = `
      <li id='data-task-${id}' class="list-group-item" style="width: 30rem;">
              <div class="card" style="width: 28rem;">
                 <div class="card-body">
+                <div class="d-flex justify-content-end"><a href="#" class="btn border-${borderStatus}">${status}</a> </div>
                    <h5 class="card-title">${name}</h5>
+                   
                    <div class="d-flex w-100 justify-content-between">
                    <h6 class="card-subtitle mb-2 text-muted">Assigned To:  <span class="text-right">${assignedTo}</span></h6>             
+                                                       
                    <p class="card-text">Due: ${dueDate} </p> 
                    </div>
                 </div>
@@ -13,9 +24,9 @@ const createTaskHtml = (id, name, description, assignedTo, dueDate, status) => {
                    <p class="card-text border-dark">${description}</p>
                 </div>
                 <div class="card-footer text-right" style="width: 28rem;">
-                  <a href="#" class="done-button btn border-success">Mark As Done</a>
-                  <a href="#" class="btn border-success">${status}</a>
-                  <a href="#" class="delete-button btn border-danger">Delete</a>
+                  <a href="#" id='bdone-task-${id}' class="done-button btn btn-success" ${hideDone}>Mark As Done</a>
+
+                  <a href="#" class="delete-button btn btn btn-danger">Delete</a>
                 </div>
 
              </div>
@@ -40,7 +51,7 @@ class TaskManager {
       });
       return foundTask; 
    }
-   addTask (name, description, assignedTo, dueDate, status='TODO') {
+   addTask (name, description, assignedTo, dueDate, status='Pending') {
       this.currentId++;
       this.tasks.push([this.currentId,name,description,assignedTo,dueDate,status]);
    }
@@ -58,7 +69,12 @@ class TaskManager {
          tasksHtmlList.push(taskHtml);
       });
       const tasksHtml = tasksHtmlList.join('\n');
-      //console.log(tasksHtml);
+      if(tasksHtml.length===0) {
+         document.getElementById('AlertMsgNoTasks').hidden=false;    
+      } else {
+        document.getElementById('AlertMsgNoTasks').hidden=true;        
+      }
+    
       document.getElementById('taskList').innerHTML = tasksHtml;
    }
 
@@ -91,7 +107,7 @@ class TaskManager {
    }
 
    deleteTask(taskId) {
-      console.log('delete funcion...',taskId,this.tasks);
+      //console.log('delete funcion...',taskId,this.tasks);
       const newTasks = [];
       this.tasks.forEach(element => { 
          if(element[0]!=taskId) {
@@ -99,7 +115,7 @@ class TaskManager {
          }
       });
       this.tasks = newTasks;
-      console.log(newTasks);
+      //console.log(newTasks);
    }
 
 //    storageAvailable(type) {
@@ -154,3 +170,5 @@ function storageAvailable(type) {
            (storage && storage.length !== 0);
    }
 }
+
+module.exports.TaskManager = TaskManager;

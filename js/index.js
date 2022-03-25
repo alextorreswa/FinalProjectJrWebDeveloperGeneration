@@ -74,19 +74,19 @@ document.getElementById("bttSubmit").onclick = AddTask;
 const taskList = document.getElementById("taskList");
 
 taskList.addEventListener('click',(event) => {
-  console.log('click on tasklist')  
+  //console.log('click on tasklist')  
   if(event.target.classList.contains('done-button')){
-    console.log('Clicked on done button');
+    //console.log('Clicked on done button');
     const parentTask = event.target.parentElement.parentElement.parentElement;
     const task = taskclass.getTaskById(getLastDigits(parentTask.id));
-    task[5] = 'DONE';
+    task[5] = 'Done';
     taskclass.save();
     taskclass.render();
     //console.log(task);   
-    //event.target.parentElement.hidden = true;       
+    //console.log(event.target.inner);
   }
   if(event.target.classList.contains('delete-button')){
-    console.log('Clicked on delete button');
+    //console.log('Clicked on delete button');
     const parentTask = event.target.parentElement.parentElement.parentElement;
     taskclass.deleteTask(getLastDigits(parentTask.id));
     taskclass.save();
