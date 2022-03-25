@@ -4,8 +4,6 @@ const newTaskDesInput = document.getElementById('taskdescription1');
 const newAssignedToInput = document.getElementById('assignedto1');
 const newDueDateInput = document.getElementById('duedate1');
 
-//Validate functions
-
 //Validate empty fields
 const validFormFieldInput = (data) => {
   if(data.length!==0) {
@@ -19,7 +17,6 @@ const validFormFieldInput = (data) => {
 function isValidDate(data) {
   var today = new Date();
   var dateTask = new Date(data+' '+'23:59:59');
-  //console.log(data,dateTask,today);
   if(data.length!==0 && !isNaN(dateTask) && dateTask>=today ) {
     return true;
   } else {
@@ -51,7 +48,7 @@ function AddTask(e) {
   const nameDes = newTaskDesInput.value;
   const nameAssig = newAssignedToInput.value;
   const nameDueDate = newDueDateInput.value;
-  console.log(nameTask,nameDes,nameAssig,nameDueDate);
+  //console.log(nameTask,nameDes,nameAssig,nameDueDate);
   
   if(validFormFieldInput(nameTask) && validFormFieldInput(nameDes) && validFormFieldInput(nameAssig) && isValidDate(nameDueDate)) {
     console.log('Valid data')
@@ -68,9 +65,8 @@ function AddTask(e) {
 
 }
 
-//Event handled 
+//Events handled 
 document.getElementById("bttSubmit").onclick = AddTask;
-
 const taskList = document.getElementById("taskList");
 
 taskList.addEventListener('click',(event) => {
@@ -92,27 +88,21 @@ taskList.addEventListener('click',(event) => {
     taskclass.save();
     taskclass.render();
   }
-
 });
 
+//Function that takes last digits of a string and converts to number 
 function getLastDigits(s) {
   return parseInt(s.match(/\d+$/)[0]);
 }
 
-
-
-
 //Create class TaskManager
 const taskclass = new TaskManager();
-taskclass.addTask('Take out the trash','Take out the trash to the front of the house','Alex','2022-04-04');
-taskclass.addTask('Cook Dinner','Prepare a healthy serving of pancakes for the family tonight','Saul','2022-03-30');
-taskclass.addTask('Pick up groceries','Go to Amazon Fresh','Saul','2022-05-01');
-taskclass.save();
-console.log(taskclass.tasks);
-//console.log(taskclass.getTaskById(2));
-
-//const htmltest = createTaskHtml('Cook Dinner','Prepare a healthy serving of pancakes for the family tonight','Nick','2020-09-20','TODO');
-//console.log(htmltest);
+// taskclass.addTask('Take out the trash','Take out the trash to the front of the house','Alex','2022-04-04');
+// taskclass.addTask('Cook Dinner','Prepare a healthy serving of pancakes for the family tonight','Saul','2022-03-30');
+// taskclass.addTask('Pick up groceries','Go to Amazon Fresh','Saul','2022-05-01');
+// taskclass.save();
+// console.log(taskclass.tasks);
+// console.log(htmltest);
 
 taskclass.load();
 taskclass.render();

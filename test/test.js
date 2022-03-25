@@ -7,39 +7,58 @@ const app = require('../js/TaskManager');
 describe('Task Manager', () => {
    describe('check methods', () => {   
 
-
-
-      it('addTask', () => {
+      it('Method add task', () => {
          // Setup
-         const taskclass = new app.TaskManager();
-         //const result = [1,'Take out the trash','Take out the trash to the front of the house','Alex','2022-04-04','Pending']
+         const taskclass = new app;
+         const taskExpected = [1,'Take out the trash','Take out the trash to the front of the house','Alex','2022-04-04','Pending']
 
          // Exercise
-         //taskclass.addTask('Take out the trash','Take out the trash to the front of the house','Alex','2022-04-04');
+         taskclass.addTask('Take out the trash','Take out the trash to the front of the house','Alex','2022-04-04');
 
          // Verify
-         //assert.equal(result,taskclass.getTaskById(1));
+         assert.deepEqual(taskExpected,taskclass.tasks[0]);
       });
 
-      it('deleteTask', () => {
+      it('Method delete task', () => {
          // Setup
-         //const number = 3;         
-         //const fizzbuzzString = 'fizz';
+         const taskclass = new app;
+         taskclass.addTask('Take out the trash','Take out the trash to the front of the house','Alex','2022-04-04');      
+         const taskExpectNoFound = [1,'Take out the trash','Take out the trash to the front of the house','Alex','2022-04-04','Pending']
+
          // Exercise
-         //const result = app.fizzBuzz(number);
+         taskclass.deleteTask(1);
+
          // Verify
-         //assert.equal(result,fizzbuzzString);
+         taskclass.tasks.forEach( (element) => { 
+            assert.notSameOrderedMembers(element, taskExpectNoFound, 'not same ordered members');
+         });
+         
       });      
 
-      it('getTaskById', () => {
+      it('Method get task by id', () => {
          // Setup
-         //const number = 5;
-         //const fizzbuzzString = 'buzz';
+         const taskclass = new app;
+         const taskExpected = [1,'Take out the trash','Take out the trash to the front of the house','Alex','2022-04-04','Pending']
+
          // Exercise
-         //const result = app.fizzBuzz(number);
+         taskclass.addTask('Take out the trash','Take out the trash to the front of the house','Alex','2022-04-04');
+
          // Verify
-         //assert.equal(result,fizzbuzzString);
+         assert.deepEqual(taskExpected,taskclass.getTaskById(1));
       });      
+
+      it('Check constructor', () => {
+         // Setup
+         const taskclass = new app;
+         const currentIdExpected = 0;
+         const tasksExpected = [];
+
+         // Exercise
+
+         // Verify
+         assert.equal(currentIdExpected,taskclass.currentId);         
+         assert.deepEqual(tasksExpected,taskclass.tasks);
+      });  
 
    });
 

@@ -12,20 +12,17 @@ const createTaskHtml = (id, name, description, assignedTo, dueDate, status) => {
              <div class="card" style="width: 28rem;">
                 <div class="card-body">
                 <div class="d-flex justify-content-end"><a href="#" class="btn border-${borderStatus}">${status}</a> </div>
-                   <h5 class="card-title">${name}</h5>
-                   
-                   <div class="d-flex w-100 justify-content-between">
+                   <h5 class="card-title">${name}</h5>                 
+                   <div class="inline w-100 justify-content-between">
                    <h6 class="card-subtitle mb-2 text-muted">Assigned To:  <span class="text-right">${assignedTo}</span></h6>             
-                                                       
-                   <p class="card-text">Due: ${dueDate} </p> 
+                   <p class="card-text text-right">Due: ${dueDate} </p> 
                    </div>
                 </div>
-                <div class="card-body ">
+                <div class="card-body py-0 pb-3">
                    <p class="card-text border-dark">${description}</p>
                 </div>
                 <div class="card-footer text-right" style="width: 28rem;">
                   <a href="#" id='bdone-task-${id}' class="done-button btn btn-success" ${hideDone}>Mark As Done</a>
-
                   <a href="#" class="delete-button btn btn btn-danger">Delete</a>
                 </div>
 
@@ -42,6 +39,7 @@ class TaskManager {
       this.currentId = currentId;
       this.tasks = [];
    }
+
    getTaskById (taskId) {
       let foundTask;
       this.tasks.forEach(element => {
@@ -51,10 +49,12 @@ class TaskManager {
       });
       return foundTask; 
    }
+
    addTask (name, description, assignedTo, dueDate, status='Pending') {
       this.currentId++;
       this.tasks.push([this.currentId,name,description,assignedTo,dueDate,status]);
    }
+
    render () {
       const tasksHtmlList = [];
       this.tasks.forEach(element => {
@@ -117,33 +117,6 @@ class TaskManager {
       this.tasks = newTasks;
       //console.log(newTasks);
    }
-
-//    storageAvailable(type) {
-//       var storage;
-//       try {
-//           storage = window[type];
-//           var x = '__storage_test__';
-//           storage.setItem(x, x);
-//           storage.removeItem(x);
-//           return true;
-//       }
-//       catch(e) {
-//           return e instanceof DOMException && (
-//               // everything except Firefox
-//               e.code === 22 ||
-//               // Firefox
-//               e.code === 1014 ||
-//               // test name field too, because code might not be present
-//               // everything except Firefox
-//               e.name === 'QuotaExceededError' ||
-//               // Firefox
-//               e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
-//               // acknowledge QuotaExceededError only if there's something already stored
-//               (storage && storage.length !== 0);
-//       }
-//   }
-  
-
 }
 
 function storageAvailable(type) {
