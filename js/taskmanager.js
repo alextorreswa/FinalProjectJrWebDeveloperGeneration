@@ -171,4 +171,4 @@ function storageAvailable(type) {
    }
 }
 
-module.exports.TaskManager = TaskManager;
+module.exports = TaskManager;

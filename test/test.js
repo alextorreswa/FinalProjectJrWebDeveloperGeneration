@@ -7,15 +7,18 @@ const app = require('../js/TaskManager');
 describe('Task Manager', () => {
    describe('check methods', () => {   
 
+
+
       it('addTask', () => {
          // Setup
-         //const number = 15;        
-         //const fizzbuzzString = 'fizz buzz';
+         const taskclass = new app.TaskManager();
+         //const result = [1,'Take out the trash','Take out the trash to the front of the house','Alex','2022-04-04','Pending']
+
          // Exercise
-         //const result = app.fizzBuzz(number);
+         //taskclass.addTask('Take out the trash','Take out the trash to the front of the house','Alex','2022-04-04');
+
          // Verify
-         //assert.equal(result,fizzbuzzString);
-         assert.equal(1,1);
+         //assert.equal(result,taskclass.getTaskById(1));
       });
 
       it('deleteTask', () => {
